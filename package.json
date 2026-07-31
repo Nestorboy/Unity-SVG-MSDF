@@ -1,0 +1,11 @@
+{
+  "name": "sh.nessie.svg-msdf",
+  "version": "1.0.0",
+  "displayName": "SVG MSDF",
+  "description": "A custom importer that converts SVG files to MSDF textures using Chlumsky's msdfgen.",
+  "license": "MIT",
+  "author": {
+    "name": "Nestorboy",
+    "url": "https://github.com/Nestorboy"
+  }
+}
