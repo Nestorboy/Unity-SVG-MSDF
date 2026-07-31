@@ -68,13 +68,17 @@ namespace Nessie.MSDF
             public static readonly GUIContent[] ModeOptions =
             {
                 new("SDF"),
+                new("PSDF"),
                 new("MSDF"),
+                new("MTSDF"),
             };
 
             public static readonly int[] ModeValues =
             {
                 (int)GeneratorMode.SDF,
+                (int)GeneratorMode.PSDF,
                 (int)GeneratorMode.MSDF,
+                (int)GeneratorMode.MTSDF,
             };
         }
     }
