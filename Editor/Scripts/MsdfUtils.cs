@@ -54,8 +54,8 @@ namespace Nessie.MSDF
         {
             return mode switch
             {
-                GeneratorMode.SDF => GraphicsFormat.R8_UNorm,
-                GeneratorMode.MSDF or GeneratorMode.PSDF or GeneratorMode.MTSDF => GraphicsFormat.R8G8B8A8_UNorm,
+                GeneratorMode.SDF or GeneratorMode.PSDF => GraphicsFormat.R8_UNorm,
+                GeneratorMode.MSDF or GeneratorMode.MTSDF => GraphicsFormat.R8G8B8A8_UNorm,
                 _ => throw new ArgumentOutOfRangeException(nameof(mode), mode, null),
             };
         }
