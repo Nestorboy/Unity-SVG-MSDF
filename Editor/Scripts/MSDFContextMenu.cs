@@ -7,11 +7,12 @@ namespace Nessie.MSDF
     {
         private const string SVG_EXTENSION = ".svg";
         private const string MSDF_EXTENSION = ".msdf";
+        private const string CONVERT_TO_MSDF_PATH = "Assets/MSDF/Convert to MSDF";
 
-        [MenuItem("Assets/Convert to MSDF", true)]
+        [MenuItem(CONVERT_TO_MSDF_PATH, true)]
         private static bool ValidateConvertToMsdf() => Selection.activeObject != null && IsSvgAssetPath(GetSelectedAssetPath());
 
-        [MenuItem("Assets/Convert to MSDF")]
+        [MenuItem(CONVERT_TO_MSDF_PATH)]
         private static void ConvertToMsdf()
         {
             string svgPath = GetSelectedAssetPath();
