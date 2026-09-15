@@ -8,7 +8,7 @@ namespace Nessie.MSDF
     public class MsdfGenArguments
     {
         /// <summary>
-        /// Absolute input of the input SVG.
+        /// Absolute path of the input SVG.
         /// </summary>
         public string InputPath;
 
