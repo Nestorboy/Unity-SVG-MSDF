@@ -16,8 +16,7 @@ namespace Nessie.MSDF
         private static void ConvertToMsdf()
         {
             string svgPath = GetSelectedAssetPath();
-
-            if (string.IsNullOrEmpty(svgPath) || !IsSvgAssetPath(svgPath))
+            if (!IsSvgAssetPath(svgPath))
             {
                 return;
             }
