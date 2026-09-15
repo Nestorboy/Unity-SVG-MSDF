@@ -30,7 +30,7 @@ namespace Nessie.MSDF
         {
             StringBuilder args = new();
 
-            var genMode = Mode.ToString().ToLowerInvariant();
+            string genMode = Mode.ToString().ToLowerInvariant();
             args.Append($"\"{genMode}\" ");
             args.Append($"-svg \"{InputPath}\" ");
             args.Append($"-o \"{OutputPath}\" ");

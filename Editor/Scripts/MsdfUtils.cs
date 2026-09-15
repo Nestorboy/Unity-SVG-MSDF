@@ -1,6 +1,6 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.IO;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 
@@ -17,15 +17,15 @@ namespace Nessie.MSDF
         [PublicAPI]
         public static Texture2D ConvertSvg(string svgLocalPath, int width, int height, GeneratorMode mode)
         {
-            var tempDirectory = GetTemporaryDirectory();
+            string tempDirectory = GetTemporaryDirectory();
             EnsurePathExists(tempDirectory);
 
-            var svgAbsolutePath = Path.GetFullPath(svgLocalPath);
-            var tempPngPath = GetTemporaryTexturePath();
+            string svgAbsolutePath = Path.GetFullPath(svgLocalPath);
+            string tempPngPath = GetTemporaryTexturePath();
 
             RunConversionProcess(svgAbsolutePath, tempPngPath, width, height, mode);
 
-            var sdfTexture = new Texture2D(width, height, GetFormat(mode), TextureCreationFlags.None);
+            Texture2D sdfTexture = new(width, height, GetFormat(mode), TextureCreationFlags.None);
             sdfTexture.LoadImage(File.ReadAllBytes(tempPngPath), false);
 
             Directory.Delete(tempDirectory, true);
@@ -35,8 +35,8 @@ namespace Nessie.MSDF
 
         private static void RunConversionProcess(string svgAbsolutePath, string pngAbsolutePath, int width, int height, GeneratorMode mode)
         {
-            var msdfProcess = new MsdfGenProcess();
-            var args = msdfProcess.Arguments;
+            MsdfGenProcess msdfProcess = new();
+            MsdfGenArguments args = msdfProcess.Arguments;
             args.InputPath = svgAbsolutePath;
             args.OutputPath = pngAbsolutePath;
             args.Mode = mode;

@@ -16,7 +16,7 @@ namespace Nessie.MSDF
 
         public override void OnImportAsset(AssetImportContext ctx)
         {
-            var assetName = Path.GetFileNameWithoutExtension(ctx.assetPath);
+            string assetName = Path.GetFileNameWithoutExtension(ctx.assetPath);
             switch (textureType)
             {
                 case TextureType.Texture2D:
@@ -32,7 +32,7 @@ namespace Nessie.MSDF
 
         private void GenerateTextureMsdfAsset(AssetImportContext ctx, string assetName)
         {
-            var tex = BuildMsdf(ctx, assetName);
+            Texture2D tex = BuildMsdf(ctx, assetName);
 
             ctx.AddObjectToAsset("tex", tex);
             ctx.SetMainObject(tex);
@@ -40,8 +40,8 @@ namespace Nessie.MSDF
 
         private void GenerateSpriteMsdfAsset(AssetImportContext ctx, string assetName)
         {
-            var tex = BuildMsdf(ctx, assetName);
-            var sprite = TextureToSprite(tex);
+            Texture2D tex = BuildMsdf(ctx, assetName);
+            Sprite sprite = TextureToSprite(tex);
 
             ctx.AddObjectToAsset("sprite", sprite);
             ctx.AddObjectToAsset("tex", tex);
@@ -50,7 +50,7 @@ namespace Nessie.MSDF
 
         private Texture2D BuildMsdf(AssetImportContext ctx, string assetName)
         {
-            var tex = MsdfUtils.ConvertSvg(ctx.assetPath, width, height, generatorMode);
+            Texture2D tex = MsdfUtils.ConvertSvg(ctx.assetPath, width, height, generatorMode);
             tex.hideFlags = HideFlags.None;
             tex.name = assetName;
             tex.wrapMode = wrapMode;
@@ -60,7 +60,7 @@ namespace Nessie.MSDF
 
         private static Sprite TextureToSprite(Texture2D tex)
         {
-            var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
+            Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
             sprite.hideFlags = HideFlags.None;
             sprite.name = tex.name;
 
